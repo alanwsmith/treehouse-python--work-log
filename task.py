@@ -8,6 +8,13 @@ class Task:
         self.name = None
         self.notes = None
 
+    def input_minutes(self):
+        while True:
+            if self.set_minutes(input("> ")):
+                break
+            else:
+                print("That was an invalid number of minutes. Try again.")
+
     def input_name(self):
         while True:
             if self.set_name(input("> ")):
