@@ -45,6 +45,7 @@ class TaskTest:
     def test_reject_invalid_minutes(self):
         task = Task()
         self.assert_equal(False, task.set_minutes(""))
+        self.assert_equal(False, task.set_minutes(0))
 
 
 

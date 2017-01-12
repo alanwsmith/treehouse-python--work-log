@@ -17,14 +17,23 @@ class Task:
 
 
     def set_minutes(self, minutes):
+        """Takes a requested number of minutes. 
+
+        If it's a positive integer, the minutes instance
+        varaible is updated and the method returns True. 
+
+        Otherwise, it returns False. 
+        """
         try:
             minutes_as_int = int(minutes)
         except ValueError:
             return False
         else:
-            self.minutes = minutes_as_int
-            return True
-
+            if minutes_as_int <= 0:
+                return False
+            else: 
+                self.minutes = minutes_as_int
+                return True
 
     def set_name(self, name):
         """Updates the `name` instance variable
