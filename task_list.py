@@ -4,6 +4,10 @@ class TaskList:
         
         self.tasks = []
 
+    def add_task(self, task):
+        self.tasks.append(task)
+        return True
+
 
 if __name__ == '__main__':
 

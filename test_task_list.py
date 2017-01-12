@@ -1,5 +1,6 @@
 import re
 
+from task import Task
 from task_list import TaskList
 
 class TaskListTest:
@@ -16,6 +17,15 @@ class TaskListTest:
     def test_start_with_empty_list(self):
         task_list = TaskList()
         self.assert_equal(0, len(task_list.tasks))
+
+    def test_add_a_task(self):
+        task_list = TaskList()
+        task = Task()
+        self.assert_equal(True, task_list.add_task(task))
+        self.assert_equal(1, len(task_list.tasks))
+
+
+
 
 
 
