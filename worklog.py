@@ -1,6 +1,12 @@
 from task import Task
+from task_list import TaskList
 
 class Worklog:
+
+    def __init__(self):
+        
+        self.task_list = TaskList()
+
 
     def initial_prompt(self):
         which_number = None
