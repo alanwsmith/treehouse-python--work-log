@@ -16,6 +16,15 @@ class Task:
                 print("That wasn't a valid name. Try again.")
 
 
+    def set_minutes(self, minutes):
+        try:
+            minutes_as_int = int(minutes)
+        except ValueError:
+            return False
+        else:
+            self.minutes = minutes_as_int
+            return True
+
 
     def set_name(self, name):
         if name == "":

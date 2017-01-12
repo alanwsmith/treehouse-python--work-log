@@ -37,6 +37,17 @@ class TaskTest:
         task = Task()
         self.assert_equal(False, task.set_name(""))
 
+    def test_set_minutes(self):
+        task = Task()
+        self.assert_equal(True, task.set_minutes(15))
+        self.assert_equal(15, task.minutes)
+
+    def test_reject_invalid_minutes(self):
+        task = Task()
+        self.assert_equal(False, task.set_minutes(""))
+
+
+
 
 
 if __name__ == '__main__':
