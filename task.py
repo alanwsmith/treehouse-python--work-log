@@ -1,6 +1,5 @@
 import datetime
 
-
 class Task:
 
     def __init__(self):
@@ -8,6 +7,10 @@ class Task:
         self.minutes = None
         self.name = None
         self.notes = None
+
+    def set_name(self, name):
+        self.name = name
+        return True 
 
 
 if __name__ == '__main__':

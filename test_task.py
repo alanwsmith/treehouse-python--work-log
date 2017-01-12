@@ -28,6 +28,11 @@ class TaskTest:
         self.assert_equal(None, task.minutes)
         self.assert_equal(None, task.notes)
 
+    def test_set_name(self):
+        task = Task()
+        self.assert_equal(True, task.set_name("New Task"))
+        self.assert_equal("New Task", task.name)
+
 
 
 if __name__ == '__main__':
