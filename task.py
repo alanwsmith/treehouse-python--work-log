@@ -1,5 +1,6 @@
 import datetime
 
+
 class Task:
 
     def __init__(self):
@@ -10,4 +11,8 @@ class Task:
 
 
 if __name__ == '__main__':
-    pass
+
+    from test_task import TaskTest
+
+    task_tester = TaskTest()
+    task_tester.run_tests()
