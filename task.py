@@ -27,6 +27,9 @@ class Task:
 
 
     def set_name(self, name):
+        """Updates the `name` instance variable
+        if a non empty name is passed. 
+        """
         if name == "":
             return False
         else:
