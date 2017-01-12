@@ -8,12 +8,23 @@ class Task:
         self.name = None
         self.notes = None
 
+    def input_name(self):
+        while True:
+            if self.set_name(input("> ")):
+                break
+            else:
+                print("That wasn't a valid name. Try again.")
+
+
+
     def set_name(self, name):
         if name == "":
             return False
         else:
             self.name = name
             return True 
+
+
 
 
 if __name__ == '__main__':

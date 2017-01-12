@@ -1,3 +1,4 @@
+from task import Task
 
 class Worklog:
 
@@ -12,7 +13,9 @@ class Worklog:
                 print("That wasn't a valid number. Try again")
 
         if which_number == 1:
-            name_of_task = input("What's the name of the new task? ")
+            task = Task()
+            print("What should the name of this task be?")
+            task.input_name()
             minutes_spent = input("How many minutes did you spend on it? ")
             other_notes = input("Enter any other notes you'd like to keep about the task: ")
 
