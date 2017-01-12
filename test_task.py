@@ -22,6 +22,13 @@ class TaskTest:
         self.assert_equal(test_date.month, task.created.month)
         self.assert_equal(test_date.day, task.created.day)
 
+    def test_initial_values_are_empty(self):
+        task = Task()
+        self.assert_equal(None, task.name)
+        self.assert_equal(None, task.minutes)
+        self.assert_equal(None, task.notes)
+
+
 
 if __name__ == '__main__':
 
