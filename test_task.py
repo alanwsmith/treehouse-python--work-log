@@ -33,6 +33,10 @@ class TaskTest:
         self.assert_equal(True, task.set_name("New Task"))
         self.assert_equal("New Task", task.name)
 
+    def test_return_false_for_empty_name(self):
+        task = Task()
+        self.assert_equal(False, task.set_name(""))
+
 
 
 if __name__ == '__main__':

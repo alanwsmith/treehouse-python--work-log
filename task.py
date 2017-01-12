@@ -9,8 +9,11 @@ class Task:
         self.notes = None
 
     def set_name(self, name):
-        self.name = name
-        return True 
+        if name == "":
+            return False
+        else:
+            self.name = name
+            return True 
 
 
 if __name__ == '__main__':
