@@ -53,7 +53,12 @@ class Task:
             return True 
 
     def set_notes(self, notes):
-        self.notes = notes
+        """Sets notes if something is passed.
+
+        Otherwise, leaves them as is
+        """
+        if not notes == "":
+            self.notes = notes
         return True 
 
 

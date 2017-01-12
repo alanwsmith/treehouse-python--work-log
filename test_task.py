@@ -52,9 +52,10 @@ class TaskTest:
         self.assert_equal(True, task.set_notes("Quick brown fox"))
         self.assert_equal("Quick brown fox", task.notes)
 
-
-
-
+    def test_skip_empty_notes(self):
+        task = Task()
+        self.assert_equal(True, task.set_notes(""))
+        self.assert_equal(None, task.notes)
 
 
 
