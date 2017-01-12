@@ -47,6 +47,13 @@ class TaskTest:
         self.assert_equal(False, task.set_minutes(""))
         self.assert_equal(False, task.set_minutes(0))
 
+    def test_set_notes(self):
+        task = Task()
+        self.assert_equal(True, task.set_notes("Quick brown fox"))
+        self.assert_equal("Quick brown fox", task.notes)
+
+
+
 
 
 

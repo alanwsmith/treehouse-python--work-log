@@ -52,6 +52,9 @@ class Task:
             self.name = name
             return True 
 
+    def set_notes(self, notes):
+        self.notes = notes
+        return True 
 
 
 
