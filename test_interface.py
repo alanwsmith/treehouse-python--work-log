@@ -9,7 +9,7 @@ class InterfaceTest:
             if re.match(r'test_', method):
                 getattr(InterfaceTest, method)(self)
 
-    print("All tests passed")
+        print("All tests passed")
 
     def assert_equal(self, a, b):
         if a != b:
