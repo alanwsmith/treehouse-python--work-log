@@ -4,7 +4,7 @@ class Worklog:
     
     def run(self):
         interface = Interface()
-        print(interface.state())
+        interface.run()
 
 
 if __name__ == '__main__':
