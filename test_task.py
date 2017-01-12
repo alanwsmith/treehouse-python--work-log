@@ -1,0 +1,31 @@
+import re
+import datetime
+
+from task import Task
+
+class TaskTest:
+
+    def assert_equal(self, a, b):
+        if a != b:
+            raise ValueError("Expected: {} - Got: {}".format(a, b))
+
+    def run_tests(self):
+        for method in dir(self):
+            if re.match(r'test_', method):
+                getattr(TaskTest, method)(self)
+        print("All tests passed")
+
+    def test_initial_date_is_set_properly(self):
+        task = Task()
+        test_date = datetime.datetime.now()
+        self.assert_equal(test_date.year, task.created.year)
+        self.assert_equal(test_date.month, task.created.month)
+        self.assert_equal(test_date.day, task.created.day)
+
+
+if __name__ == '__main__':
+
+    task_test = TaskTest()
+    task_test.run_tests()
+
+
