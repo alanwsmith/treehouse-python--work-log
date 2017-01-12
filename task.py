@@ -22,6 +22,9 @@ class Task:
             else:
                 print("That wasn't a valid name. Try again.")
 
+    def input_notes(self):
+        self.set_notes(input("> "))
+
 
     def set_minutes(self, minutes):
         """Takes a requested number of minutes. 

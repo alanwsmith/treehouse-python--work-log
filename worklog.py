@@ -18,10 +18,8 @@ class Worklog:
             task.input_name()
             print("How many minutes did you spend on it?")
             task.input_minutes()
-            
-# other_notes = input("Enter any other notes you'd like to keep about the task: ")
-
-
+            print("Add any other notes you want here (or just hit Enter/Return if you don't want any).")
+            task.input_notes()
 
 
 if __name__ == '__main__':
