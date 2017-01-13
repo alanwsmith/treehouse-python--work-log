@@ -42,7 +42,7 @@ class TaskListTest:
     def test_save_list_to_file(self):
         task_list = TaskList()
         task1 = Task()
-        output_file_path = 'test_output/test-a.csv'
+        output_file_path = self.testing_files[0] 
         task1.set_name('Test Task One')
         task1.set_minutes(30)
         task1.set_notes('This is a great test task')
