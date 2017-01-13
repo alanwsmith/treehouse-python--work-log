@@ -1,3 +1,4 @@
+import os.path
 import re
 
 from task import Task
@@ -23,6 +24,19 @@ class TaskListTest:
         task = Task()
         self.assert_equal(True, task_list.add_task(task))
         self.assert_equal(1, len(task_list.tasks))
+
+    def test_save_list_to_file(self):
+        task_list = TaskList()
+        task1 = Task()
+        output_file_path = 'test_output/test-a.csv'
+        task1.set_name('Test Task One')
+        task1.set_minutes(30)
+        task1.set_notes('This is a great test task')
+        task_list.add_task(task1)
+
+        self.assert_equal(True, task_list.save_to_file(output_file_path))
+        self.assert_equal(True, os.path.isfile(output_file_path))
+
 
 
 

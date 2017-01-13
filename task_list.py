@@ -8,6 +8,12 @@ class TaskList:
         self.tasks.append(task)
         return True
 
+    def save_to_file(self, file_path):
+        output_file = open(file_path, 'w')
+        output_file.close()
+        return True
+
+
 
 if __name__ == '__main__':
 
