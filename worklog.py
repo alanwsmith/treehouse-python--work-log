@@ -27,6 +27,10 @@ class Worklog:
             print("Add any other notes you want here (or just hit Enter/Return if you don't want any).")
             task.input_notes()
 
+            self.task_list.add_task(task)
+
+            print(self.task_list)
+
 
 if __name__ == '__main__':
     
