@@ -17,7 +17,7 @@ class TaskTest:
 
     def test_initial_date_is_set_properly(self):
         task = Task()
-        test_date = datetime.datetime.now()
+        test_date = datetime.date.today()
         self.assert_equal(test_date.year, task.created.year)
         self.assert_equal(test_date.month, task.created.month)
         self.assert_equal(test_date.day, task.created.day)
