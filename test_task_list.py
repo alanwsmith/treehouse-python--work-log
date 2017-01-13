@@ -54,11 +54,9 @@ class TaskListTest:
 
 
 
-
-
-
-
 if __name__ == '__main__':
 
     task_list_tester = TaskListTest()
     task_list_tester.run_tests()
+    task_list_tester.test_save_list_to_file()
+
