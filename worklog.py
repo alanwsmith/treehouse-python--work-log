@@ -6,6 +6,7 @@ class Worklog:
     def __init__(self):
         
         self.task_list = TaskList()
+        self.data_file = 'data.csv'
 
 
     def initial_prompt(self):
@@ -28,6 +29,7 @@ class Worklog:
             task.input_notes()
 
             self.task_list.add_task(task)
+            self.task_list.save_to_file(self.data_file)
 
             print(self.task_list)
 
