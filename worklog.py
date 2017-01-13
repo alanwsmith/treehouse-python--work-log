@@ -31,10 +31,22 @@ class Worklog:
 
             print(self.task_list)
 
+    def run_test(self):
+        import sys
+        system_input = sys.stdin
+        test_input = open('tests/basic.txt', 'r')
+        sys.stdin = test_input
+        self.initial_prompt()
+        test_input.close()
+        sys.stdin = system_input
+
+
 
 if __name__ == '__main__':
     
     wl = Worklog()
-    wl.initial_prompt()
+    #wl.initial_prompt()
+    wl.run_test()
+
 
 
