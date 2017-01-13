@@ -41,12 +41,10 @@ class Worklog:
         sys.stdin = system_input
 
 
-
 if __name__ == '__main__':
     
     wl = Worklog()
     #wl.initial_prompt()
     wl.run_test()
-
 
 
