@@ -1,3 +1,5 @@
+import csv
+
 class TaskList:
 
     def __init__(self):
@@ -9,8 +11,10 @@ class TaskList:
         return True
 
     def save_to_file(self, file_path):
-        output_file = open(file_path, 'w')
-        output_file.close()
+        with open(file_path, 'w') as csvfile:
+            taskwriter = csv.writer(csvfile, delimiter='\t', quotechar='|', quoting=csv.QUOTE_MINIMAL)
+            for task in self.tasks:
+                taskwriter.writerow([task.date, task.name, task.minutes, task.notes])
         return True
 
 
@@ -21,3 +25,4 @@ if __name__ == '__main__':
 
     task_list_tester = TaskListTest()
     task_list_tester.run_tests()
+    task_list_tester.test_save_list_to_file()

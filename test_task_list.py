@@ -40,6 +40,9 @@ class TaskListTest:
         self.assert_equal(1, len(task_list.tasks))
 
     def test_save_list_to_file(self):
+        """This is where the output is written. 
+        The checks for the valididity of the data are being done manually
+        """
         task_list = TaskList()
         task1 = Task()
         output_file_path = self.testing_files[0] 
@@ -50,6 +53,7 @@ class TaskListTest:
 
         self.assert_equal(True, task_list.save_to_file(output_file_path))
         self.assert_equal(True, os.path.isfile(output_file_path))
+        
 
 
 
