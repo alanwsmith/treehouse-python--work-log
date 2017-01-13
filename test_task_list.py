@@ -1,10 +1,21 @@
 import os.path
 import re
 
+from glob import glob
 from task import Task
 from task_list import TaskList
 
 class TaskListTest:
+
+    def __init__(self):
+    
+        self.testing_dir = 'test_output'
+        
+        self.testing_files = [
+            '{}/test-a.csv'.format(self.testing_dir) 
+        ]
+
+
     def assert_equal(self, a, b):
         if a != b:
             raise ValueError("Expected: {} - Got: {}".format(a, b))
@@ -12,6 +23,9 @@ class TaskListTest:
     def run_tests(self):
         for method in dir(self):
             if re.match(r'test_', method):
+                for testing_file in self.testing_files:
+                    if os.path.isfile(testing_file):
+                        os.remove(testing_file)
                 getattr(TaskListTest, method)(self)
         print("All tests passed")
 
