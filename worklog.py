@@ -1,6 +1,13 @@
 from task import Task
+from task_list import TaskList
 
 class Worklog:
+
+    def __init__(self):
+        
+        self.task_list = TaskList()
+        self.data_file = 'data.csv'
+
 
     def initial_prompt(self):
         which_number = None
@@ -21,10 +28,25 @@ class Worklog:
             print("Add any other notes you want here (or just hit Enter/Return if you don't want any).")
             task.input_notes()
 
+            self.task_list.add_task(task)
+            self.task_list.save_to_file(self.data_file)
+
+            print(self.task_list)
+
+    def run_test(self):
+        import sys
+        system_input = sys.stdin
+        test_input = open('tests/basic.txt', 'r')
+        sys.stdin = test_input
+        self.initial_prompt()
+        test_input.close()
+        sys.stdin = system_input
+
 
 if __name__ == '__main__':
     
     wl = Worklog()
-    wl.initial_prompt()
+    #wl.initial_prompt()
+    wl.run_test()
 
 

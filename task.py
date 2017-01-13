@@ -3,7 +3,7 @@ import datetime
 class Task:
 
     def __init__(self):
-        self.created = datetime.datetime.now()
+        self.date = datetime.date.today()
         self.minutes = None
         self.name = None
         self.notes = None
