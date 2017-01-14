@@ -1,5 +1,7 @@
 import csv
 
+from task import Task
+
 class TaskList:
 
     def __init__(self):
@@ -10,12 +12,21 @@ class TaskList:
         self.tasks.append(task)
         return True
 
+    def read_from_file(self, file_path):
+        with open(file_path, 'r') as csvfile:
+            task_reader = csv.reader(csvfile, delimiter='\t', quotechar='|')
+            for row in task_reader:
+                task = Task()
+                self.tasks.append(task)
+        return True 
+
     def save_to_file(self, file_path):
         with open(file_path, 'w') as csvfile:
             taskwriter = csv.writer(csvfile, delimiter='\t', quotechar='|', quoting=csv.QUOTE_MINIMAL)
             for task in self.tasks:
                 taskwriter.writerow([task.date, task.name, task.minutes, task.notes])
         return True
+
 
 
 

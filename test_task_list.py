@@ -55,6 +55,11 @@ class TaskListTest:
         self.assert_equal(True, os.path.isfile(output_file_path))
         
 
+    def test_read_from_file(self):
+        task_list = TaskList()
+        self.assert_equal(True, task_list.read_from_file('tests/fixture-1.csv'))
+        self.assert_equal(7, len(task_list.tasks))
+
 
 
 
