@@ -63,7 +63,7 @@ class Worklog:
                 self.search_by_date()
                 break
             elif get_input == '2':
-                print("Search by time spent")
+                self.search_by_duration()
                 break
             elif get_input == '3': 
                 print("Search by exact text string")
@@ -78,6 +78,7 @@ class Worklog:
     def search_by_date(self):
         print("\033c", end="")
         print("Choose from one of the following dates: ")
+        print()
         for date_index, date_string in enumerate(self.task_list.date_list()):
             print("  {}. {}".format(date_index + 1, date_string))
         while True:
@@ -102,6 +103,34 @@ class Worklog:
                 else:
                     print("That isn't a valid option. Try again.")
                     continue
+    
+    def search_by_duration(self):
+        print("\033c", end="")
+        print("Choose from one of the following durations: ")
+        print()
+        for duration_index, duration in enumerate(self.task_list.durations()):
+            print("  {}. {}".format(duration_index + 1, duration))
+        while True:
+            print()
+            get_input = input("Enter the number for the duration you wish to see: ").strip().lower()
+            try:
+                input_as_zero_based_int = int(get_input) - 1
+            except ValueError:
+                print("That isn't a valid option. Try again.")
+                continue
+            else:
+                if input_as_zero_based_int >= 0 and input_as_zero_based_int < len(self.task_list.durations()):
+                    print("\033c", end="")
+                    request_minutes = self.task_list.durations()[input_as_zero_based_int]
+                    print("Here are the tasks that took {} minutes".format(request_minutes))
+
+                    input("\nPress Enter/Return to return to the main menu")
+                    print("\033c", end="")
+                    break
+                else:
+                    print("That isn't a valid option. Try again.")
+                    continue
+
 
     def run_test(self):
         import sys
