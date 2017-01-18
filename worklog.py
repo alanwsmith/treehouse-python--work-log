@@ -94,7 +94,7 @@ class Worklog:
                     request_date = self.task_list.date_list()[input_as_zero_based_int]
                     print("Here are the tasks you did on {}:\n".format(request_date))
                     for task in self.task_list.tasks_for_date(request_date):
-                        print("- {} ~ {} minutes ~  Notes: {}".format(task.name, task.minutes, task.notes))
+                        task.display()
 
                     input("\nPress Enter/Return to return to the main menu")
                     print("\033c", end="")
@@ -102,9 +102,6 @@ class Worklog:
                 else:
                     print("That isn't a valid option. Try again.")
                     continue
-
-
-
 
     def run_test(self):
         import sys

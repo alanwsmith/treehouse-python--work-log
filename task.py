@@ -8,6 +8,15 @@ class Task:
         self.name = None
         self.notes = None
 
+    def display(self):
+        print("#" * 70)
+        print("Task: {}".format(self.name))
+        print("Date: {}".format(str(self.date)))
+        print("Duration: {} minutes".format(self.minutes))
+        if self.notes:
+            print("Notes: {}".format(self.notes))
+        print()
+
     def input_minutes(self):
         while True:
             if self.set_minutes(input("> ")):
