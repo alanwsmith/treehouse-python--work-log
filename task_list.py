@@ -23,7 +23,7 @@ class TaskList:
                 date_list.append(check_date)
         return sorted(date_list)
 
-    def duration_list(self):
+    def durations(self):
         durations = []
         for task in self.tasks:
             check_duration = task.minutes

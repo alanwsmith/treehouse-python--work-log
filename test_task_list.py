@@ -46,11 +46,11 @@ class TaskListTest:
         target_date_list = ["2016-01-03", "2016-02-07", "2016-11-12", "2017-01-01", "2017-01-02", "2017-01-03","2017-01-07"]
         self.assert_equal(target_date_list, task_list.date_list())
 
-    def test_duration_list(self):
+    def test_durations(self):
         task_list = TaskList()
         self.assert_equal(True, task_list.read_from_file('tests/fixture-2.csv'))
-        target_duration_list = [5, 30, 90, 120]
-        self.assert_equal(target_duration_list, task_list.duration_list())
+        target_durations = [5, 30, 90, 120]
+        self.assert_equal(target_durations, task_list.durations())
 
     def test_read_from_file(self):
         task_list = TaskList()
