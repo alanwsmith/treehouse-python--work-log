@@ -1,5 +1,6 @@
 import csv
 import os.path
+import re
 
 from task import Task
 
@@ -69,6 +70,16 @@ class TaskList:
         for task in self.tasks:
             if int(duration) == int(task.minutes):
                 tasks.append(task)
+        return tasks
+
+    def tasks_with_string(self, string):
+        tasks = []
+        for task in self.tasks:
+            if re.search(string.lower(), task.name.lower()):
+                tasks.append(task)
+            if task.notes:
+                if re.search(string.lower(), task.notes.lower()):
+                    tasks.append(task)
         return tasks
 
 
