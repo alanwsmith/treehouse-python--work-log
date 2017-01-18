@@ -84,13 +84,15 @@ class Worklog:
             print()
             get_input = input("Enter the number for the date you wish to see: ").strip().lower()
             try:
-                input_as_int = int(get_input)
+                input_as_zero_based_int = int(get_input) - 1
             except ValueError:
-                print("That isn't a valid number. Try again.")
+                print("That isn't a valid option. Try again.")
                 continue
             else:
-                if input_as_int >= 0 and input_as_int < len(self.task_list.date_list()):
-                    print("Got it!")
+                if input_as_zero_based_int >= 0 and input_as_zero_based_int < len(self.task_list.date_list()):
+                    print("\033c", end="")
+                    request_date = self.task_list.date_list()[input_as_zero_based_int]
+                    print("Here are the tasks you did on {}:".format(request_date))
                     break
                 else:
                     print("That isn't a valid option. Try again.")
