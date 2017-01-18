@@ -32,7 +32,7 @@ class Worklog:
             print("  1. Add a new item")
             print("  2. Lookup an item")
             print("  3. Quit\n")
-            get_input = input("Enter the number of your selection: ").strip().lower()
+            get_input = input("Enter the number of your selection (1-3): ").strip().lower()
             if get_input == '1':
                 print("\033c", end="")
                 self.add_item()
@@ -43,7 +43,7 @@ class Worklog:
                 break
             else:
                 print("\033c", end="")
-                print("That wasn't a valid number. Try again.")
+                print("That wasn't a valid option. Must be: 1-3. Try again.")
 
     def lookup_menu(self):
         print("\033c", end="")
@@ -56,7 +56,7 @@ class Worklog:
             print("  3. Exact text search")
             print("  4. Pattern text search")
             print()
-            get_input = input("Enter the number of your selection: ").strip().lower()
+            get_input = input("Enter the number of your selection (1-4): ").strip().lower()
 
             if get_input == '1':
                 self.search_by_date()
@@ -72,7 +72,7 @@ class Worklog:
                 break
             else:
                 print("\033c", end="")
-                print("That wasn't a valid number. Try again")
+                print("That wasn't a valid option. Must be: 1-4. Try again")
 
     def search_by_date(self):
         print("\033c", end="")
@@ -82,7 +82,7 @@ class Worklog:
             print("  {}. {}".format(date_index + 1, date_string))
         while True:
             print()
-            get_input = input("Enter the number for the date you wish to see: ").strip().lower()
+            get_input = input("Enter the number for the date you wish to see (1-{}): ".format(len(self.task_list.date_list()))).strip().lower()
             try:
                 input_as_zero_based_int = int(get_input) - 1
             except ValueError:
@@ -111,7 +111,7 @@ class Worklog:
             print("  {}. {}".format(duration_index + 1, duration))
         while True:
             print()
-            get_input = input("Enter the number for the duration you wish to see: ").strip().lower()
+            get_input = input("Enter the number for the duration you wish to see (1-{}): ".format(len(self.task_list.durations()))).strip().lower()
             try:
                 input_as_zero_based_int = int(get_input) - 1
             except ValueError:
