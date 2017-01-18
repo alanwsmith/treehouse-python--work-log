@@ -4,10 +4,11 @@ import re
 
 from task import Task
 
+
 class TaskList:
 
     def __init__(self):
-        
+
         self.tasks = []
 
     def add_task(self, task):
@@ -33,7 +34,7 @@ class TaskList:
         return sorted(durations)
 
     def read_from_file(self, file_path):
-        """Turns a CSV file into a set of tasks. 
+        """Turns a CSV file into a set of tasks.
 
         If the file does not exist, the tasks
         instance variable simple remains empty.
@@ -49,13 +50,18 @@ class TaskList:
                 task.set_minutes(int(row[2]))
                 task.set_notes(row[3])
                 self.tasks.append(task)
-        return True 
+        return True
 
     def save_to_file(self, file_path):
         with open(file_path, 'w') as csvfile:
-            taskwriter = csv.writer(csvfile, delimiter='\t', quotechar='|', quoting=csv.QUOTE_MINIMAL)
+            taskwriter = csv.writer(
+                csvfile,
+                delimiter='\t',
+                quotechar='|',
+                quoting=csv.QUOTE_MINIMAL)
             for task in self.tasks:
-                taskwriter.writerow([task.date, task.name, task.minutes, task.notes])
+                taskwriter.writerow(
+                    [task.date, task.name, task.minutes, task.notes])
         return True
 
     def tasks_for_date(self, date_string):
@@ -63,7 +69,7 @@ class TaskList:
         for task in self.tasks:
             if date_string == str(task.date):
                 matching_tasks.append(task)
-        return matching_tasks 
+        return matching_tasks
 
     def tasks_for_duration(self, duration):
         tasks = []
@@ -76,7 +82,7 @@ class TaskList:
         tasks = []
         notes_as_string = ""
         for task in self.tasks:
-            # Load in the actual notes if they exist so you can do 
+            # Load in the actual notes if they exist so you can do
             # the elif later
             if task.notes:
                 notes_as_string = task.notes
@@ -90,7 +96,7 @@ class TaskList:
         tasks = []
         notes_as_string = ""
         for task in self.tasks:
-            # Load in the actual notes if they exist so you can do 
+            # Load in the actual notes if they exist so you can do
             # the elif later
             if task.notes:
                 notes_as_string = task.notes

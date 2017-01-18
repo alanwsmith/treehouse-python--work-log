@@ -1,5 +1,6 @@
 import datetime
 
+
 class Task:
 
     def __init__(self):
@@ -38,14 +39,13 @@ class Task:
         self.date = datetime.datetime.strptime(date, '%Y-%m-%d').date()
         return True
 
-
     def set_minutes(self, minutes):
-        """Takes a requested number of minutes. 
+        """Takes a requested number of minutes.
 
         If it's a positive integer, the minutes instance
-        varaible is updated and the method returns True. 
+        varaible is updated and the method returns True.
 
-        Otherwise, it returns False. 
+        Otherwise, it returns False.
         """
         try:
             minutes_as_int = int(minutes)
@@ -54,19 +54,19 @@ class Task:
         else:
             if minutes_as_int <= 0:
                 return False
-            else: 
+            else:
                 self.minutes = minutes_as_int
                 return True
 
     def set_name(self, name):
         """Updates the `name` instance variable
-        if a non empty name is passed. 
+        if a non empty name is passed.
         """
         if name == "":
             return False
         else:
             self.name = name
-            return True 
+            return True
 
     def set_notes(self, notes):
         """Sets notes if something is passed.
@@ -75,8 +75,7 @@ class Task:
         """
         if not notes == "":
             self.notes = notes
-        return True 
-
+        return True
 
 
 if __name__ == '__main__':
