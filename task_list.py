@@ -47,7 +47,12 @@ class TaskList:
                 taskwriter.writerow([task.date, task.name, task.minutes, task.notes])
         return True
 
-
+    def tasks_for_date(self, date_string):
+        matching_tasks = []
+        for task in self.tasks:
+            if date_string == str(task.date):
+                matching_tasks.append(task)
+        return matching_tasks 
 
 
 if __name__ == '__main__':
