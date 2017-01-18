@@ -40,8 +40,6 @@ class TaskListTest:
         target_date_list = ['2017-01-02', '2017-01-03', '2017-01-04', '2017-01-07', '2017-01-08'] 
         self.assert_equal(target_date_list, task_list.date_list())
 
-        
-
     def test_read_from_file(self):
         task_list = TaskList()
         self.assert_equal(True, task_list.read_from_file('tests/fixture-1.csv'))

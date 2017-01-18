@@ -14,8 +14,12 @@ class TaskList:
         return True
 
     def date_list(self):
-        target_date_list = ['2017-01-02', '2017-01-03', '2017-01-04', '2017-01-07', '2017-01-08'] 
-        return target_date_list 
+        date_list = []
+        for task in self.tasks:
+            check_date = str(task.date)
+            if check_date not in date_list:
+                date_list.append(check_date)
+        return date_list 
 
     def read_from_file(self, file_path):
         """Turns a CSV file into a set of tasks. 
