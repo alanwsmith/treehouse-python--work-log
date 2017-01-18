@@ -56,7 +56,7 @@ class Worklog:
             print("  2. Time spent")
             print("  3. Exact text search")
             print("  4. Pattern text search")
-        
+            print()
             get_input = input("Enter the number of your selection: ").strip().lower()
 
             if get_input == '1':
