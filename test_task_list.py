@@ -54,8 +54,22 @@ class TaskListTest:
         self.assert_equal(True, task_list.save_to_file(output_file_path))
         self.assert_equal(True, os.path.isfile(output_file_path))
         
+    def test_read_from_file(self):
+        task_list = TaskList()
+        self.assert_equal(True, task_list.read_from_file('tests/fixture-1.csv'))
+        self.assert_equal(7, len(task_list.tasks))
+        task = task_list.tasks[0]
+        self.assert_equal('2017-01-02', str(task.date))
+        self.assert_equal('Test Task One', task.name)
+        self.assert_equal(30, task.minutes)
+        self.assert_equal('This is a wonderful test task', task.notes)
 
+    def test_read_from_file_that_does_not_exist(self):
+        task_list = TaskList()
+        self.assert_equal(True, task_list.read_from_file('file-that-does-not-exist.csv'))
+        self.assert_equal(0, len(task_list.tasks))
 
+         
 
 
 if __name__ == '__main__':

@@ -25,6 +25,10 @@ class Task:
     def input_notes(self):
         self.set_notes(input("> "))
 
+    def set_date(self, date):
+        self.date = datetime.datetime.strptime(date, '%Y-%m-%d').date()
+        return True
+
 
     def set_minutes(self, minutes):
         """Takes a requested number of minutes. 

@@ -28,6 +28,13 @@ class TaskTest:
         self.assert_equal(None, task.minutes)
         self.assert_equal(None, task.notes)
 
+    def test_set_date(self):
+        task = Task()
+        self.assert_equal(True, task.set_date('2017-01-04'))
+        self.assert_equal(1, task.date.month)
+        self.assert_equal(4, task.date.day)
+        self.assert_equal('2017-01-04', str(task.date))
+
     def test_set_name(self):
         task = Task()
         self.assert_equal(True, task.set_name("New Task"))
@@ -56,7 +63,6 @@ class TaskTest:
         task = Task()
         self.assert_equal(True, task.set_notes(""))
         self.assert_equal(None, task.notes)
-
 
 
 if __name__ == '__main__':
