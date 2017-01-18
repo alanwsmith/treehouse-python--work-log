@@ -14,12 +14,22 @@ class TaskList:
         return True
 
     def date_list(self):
+        """TODO: This should be refacoted to be called `dates`
+        """
         date_list = []
         for task in self.tasks:
             check_date = str(task.date)
             if check_date not in date_list:
                 date_list.append(check_date)
         return sorted(date_list)
+
+    def durations(self):
+        durations = []
+        for task in self.tasks:
+            check_duration = task.minutes
+            if check_duration not in durations:
+                durations.append(check_duration)
+        return sorted(durations)
 
     def read_from_file(self, file_path):
         """Turns a CSV file into a set of tasks. 
@@ -53,6 +63,13 @@ class TaskList:
             if date_string == str(task.date):
                 matching_tasks.append(task)
         return matching_tasks 
+
+    def tasks_for_duration(self, duration):
+        tasks = []
+        for task in self.tasks:
+            if int(duration) == int(task.minutes):
+                tasks.append(task)
+        return tasks
 
 
 if __name__ == '__main__':
