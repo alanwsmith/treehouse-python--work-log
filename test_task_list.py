@@ -80,7 +80,6 @@ class TaskListTest:
         task_list = TaskList()
         self.assert_equal(0, len(task_list.tasks))
 
-if __name__ == '__main__':
     def test_read_from_file(self):
         task_list = TaskList()
         self.assert_equal(True, task_list.read_from_file('tests/fixture-1.csv'))
