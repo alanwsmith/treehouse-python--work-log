@@ -3,6 +3,7 @@ import datetime
 
 from task import Task
 
+
 class TaskTest:
 
     def assert_equal(self, a, b):
@@ -69,5 +70,3 @@ if __name__ == '__main__':
 
     task_test = TaskTest()
     task_test.run_tests()
-
-
