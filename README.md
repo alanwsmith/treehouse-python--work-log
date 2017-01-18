@@ -30,5 +30,11 @@ I added a `quit` option to the main menu. Other than that, I didn't spend time o
 
 My priority is getting to the Django portions of the course instead of building command line interfaces.
 
+UI Notes
+--------
+
+The UI is based off selecting menu items by number. The menus to look up by date and time spent will get unwieldy as the number of dates/tasks increases. While pagination would address that, this is another case where my time is better spent progressing in the course than in working on command line user interfaces. 
+
+
 
 
