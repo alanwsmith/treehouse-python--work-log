@@ -47,32 +47,36 @@ class Worklog:
 
     def lookup_menu(self):
         print("\033c", end="")
-        
-        while True:
 
-            print("Lookup task by:\n")
-            print("  1. Date")
-            print("  2. Time spent")
-            print("  3. Exact text search")
-            print("  4. Pattern text search")
-            print()
-            get_input = input("Enter the number of your selection (1-4): ").strip().lower()
+        if len(self.task_list.tasks) == 0:
+            print("Nothing to lookup. Your task log is empty.\n")
+            input("Press Enter/Return to return to the main menu and add a task.")
+        else:    
+            while True:
 
-            if get_input == '1':
-                self.search_by_date()
-                break
-            elif get_input == '2':
-                self.search_by_duration()
-                break
-            elif get_input == '3': 
-                self.search_by_text()
-                break
-            elif get_input == '4':
-                self.search_by_regex()
-                break
-            else:
-                print("\033c", end="")
-                print("That wasn't a valid option. Must be: 1-4. Try again")
+                print("Lookup task by:\n")
+                print("  1. Date")
+                print("  2. Time spent")
+                print("  3. Exact text search")
+                print("  4. Pattern text search")
+                print()
+                get_input = input("Enter the number of your selection (1-4): ").strip().lower()
+
+                if get_input == '1':
+                    self.search_by_date()
+                    break
+                elif get_input == '2':
+                    self.search_by_duration()
+                    break
+                elif get_input == '3': 
+                    self.search_by_text()
+                    break
+                elif get_input == '4':
+                    self.search_by_regex()
+                    break
+                else:
+                    print("\033c", end="")
+                    print("That wasn't a valid option. Must be: 1-4. Try again")
 
     def search_by_date(self):
         print("\033c", end="")
