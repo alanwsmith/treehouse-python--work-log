@@ -62,6 +62,7 @@ class TaskListTest:
         self.assert_equal('2017-01-02', str(task.date))
         self.assert_equal('Test Task One', task.name)
         self.assert_equal(30, task.minutes)
+        self.assert_equal('This is a wonderful test task', task.notes)
 
 
 

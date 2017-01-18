@@ -20,6 +20,7 @@ class TaskList:
                 task.set_date(row[0])
                 task.set_name(row[1])
                 task.set_minutes(int(row[2]))
+                task.set_notes(row[3])
                 self.tasks.append(task)
         return True 
 
