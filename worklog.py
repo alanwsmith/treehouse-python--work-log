@@ -38,7 +38,7 @@ class Worklog:
                 print("\033c", end="")
                 self.add_item()
             elif get_input == '2':
-                print("TKTKTKTK: Lookup")
+                self.lookup_menu()
             elif get_input == '3':
                 print("Thanks for using Worklogger!")
                 break
@@ -46,6 +46,34 @@ class Worklog:
                 print("\033c", end="")
                 print("That wasn't a valid number. Try again.")
 
+    def lookup_menu(self):
+        print("\033c", end="")
+        
+        while True:
+
+            print("Lookup task by:\n")
+            print("  1. Date")
+            print("  2. Time spent")
+            print("  3. Exact text search")
+            print("  4. Pattern text search")
+        
+            get_input = input("Enter the number of your selection: ").strip().lower()
+
+            if get_input == '1':
+                print("Search by date")
+                break
+            elif get_input == '2':
+                print("Search by time spent")
+                break
+            elif get_input == '3': 
+                print("Search by exact text string")
+                break
+            elif get_input == '4':
+                print("Search by RegEx Pattern")
+                break
+            else:
+                print("\033c", end="")
+                print("That wasn't a valid number. Try again")
 
     def run_test(self):
         import sys
