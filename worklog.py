@@ -7,6 +7,7 @@ class Worklog:
         
         self.task_list = TaskList()
         self.data_file = 'data.csv'
+        self.task_list.read_from_file(self.data_file)
 
 
     def initial_prompt(self):
