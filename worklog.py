@@ -9,7 +9,6 @@ class Worklog:
         self.data_file = 'data.csv'
         self.task_list.read_from_file(self.data_file)
 
-
     def add_item(self):
         task = Task()
         print("What should the name of this task be?")
@@ -66,7 +65,7 @@ class Worklog:
                 self.search_by_duration()
                 break
             elif get_input == '3': 
-                print("Search by exact text string")
+                self.search_by_text()
                 break
             elif get_input == '4':
                 print("Search by RegEx Pattern")
@@ -132,6 +131,26 @@ class Worklog:
                 else:
                     print("That isn't a valid option. Try again.")
                     continue
+
+    def search_by_text(self):
+        print("\033c", end="")
+        print("Enter the exact text you want to search for (case insensitive):")
+        get_input = input("> ")
+        list_of_tasks = self.task_list.tasks_with_string(get_input)
+        if len(list_of_tasks) > 0:
+            print("\033c", end="")
+            print("Here are the tasks with '{}' in the name or notes:\n".format(get_input))
+
+            for task in list_of_tasks:
+                task.display()
+        else:
+            print()
+            print("The string '{}' is not in any of your task names or notes.".format(get_input))
+            print()
+
+        input("\nPress Enter/Return to return to the main menu")
+        print("\033c", end="")
+
 
 
     def run_test(self):
