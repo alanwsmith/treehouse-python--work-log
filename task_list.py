@@ -74,22 +74,30 @@ class TaskList:
 
     def tasks_with_regex(self, regex):
         tasks = []
+        notes_as_string = ""
         for task in self.tasks:
+            # Load in the actual notes if they exist so you can do 
+            # the elif later
+            if task.notes:
+                notes_as_string = task.notes
             if re.search(r'%s' % regex, task.name, re.IGNORECASE):
                 tasks.append(task)
-            if task.notes:
-                if re.search(r'%s' % regex, task.notes, re.IGNORECASE):
-                    tasks.append(task)
+            elif re.search(r'%s' % regex, notes_as_string, re.IGNORECASE):
+                tasks.append(task)
         return tasks
 
     def tasks_with_string(self, string):
         tasks = []
+        notes_as_string = ""
         for task in self.tasks:
+            # Load in the actual notes if they exist so you can do 
+            # the elif later
+            if task.notes:
+                notes_as_string = task.notes
             if re.search(string, task.name, re.IGNORECASE):
                 tasks.append(task)
-            if task.notes:
-                if re.search(string, task.notes, re.IGNORECASE):
-                    tasks.append(task)
+            elif re.search(string, notes_as_string, re.IGNORECASE):
+                tasks.append(task)
         return tasks
 
 
@@ -99,4 +107,3 @@ if __name__ == '__main__':
 
     task_list_tester = TaskListTest()
     task_list_tester.run_tests()
-    task_list_tester.test_save_list_to_file()

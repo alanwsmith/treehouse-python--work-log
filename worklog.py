@@ -32,7 +32,7 @@ class Worklog:
             print("  1. Add a new item")
             print("  2. Lookup an item")
             print("  3. Quit\n")
-            get_input = input("Enter the number of your selection: ").strip().lower()
+            get_input = input("Enter the number of your selection (1-3): ").strip().lower()
             if get_input == '1':
                 print("\033c", end="")
                 self.add_item()
@@ -43,36 +43,40 @@ class Worklog:
                 break
             else:
                 print("\033c", end="")
-                print("That wasn't a valid number. Try again.")
+                print("That wasn't a valid option. Must be: 1-3. Try again.")
 
     def lookup_menu(self):
         print("\033c", end="")
-        
-        while True:
 
-            print("Lookup task by:\n")
-            print("  1. Date")
-            print("  2. Time spent")
-            print("  3. Exact text search")
-            print("  4. Pattern text search")
-            print()
-            get_input = input("Enter the number of your selection: ").strip().lower()
+        if len(self.task_list.tasks) == 0:
+            print("Nothing to lookup. Your task log is empty.\n")
+            input("Press Enter/Return to return to the main menu and add a task.")
+        else:    
+            while True:
 
-            if get_input == '1':
-                self.search_by_date()
-                break
-            elif get_input == '2':
-                self.search_by_duration()
-                break
-            elif get_input == '3': 
-                self.search_by_text()
-                break
-            elif get_input == '4':
-                self.search_by_regex()
-                break
-            else:
-                print("\033c", end="")
-                print("That wasn't a valid number. Try again")
+                print("Lookup task by:\n")
+                print("  1. Date")
+                print("  2. Time spent")
+                print("  3. Exact text search")
+                print("  4. Pattern text search")
+                print()
+                get_input = input("Enter the number of your selection (1-4): ").strip().lower()
+
+                if get_input == '1':
+                    self.search_by_date()
+                    break
+                elif get_input == '2':
+                    self.search_by_duration()
+                    break
+                elif get_input == '3': 
+                    self.search_by_text()
+                    break
+                elif get_input == '4':
+                    self.search_by_regex()
+                    break
+                else:
+                    print("\033c", end="")
+                    print("That wasn't a valid option. Must be: 1-4. Try again")
 
     def search_by_date(self):
         print("\033c", end="")
@@ -82,7 +86,7 @@ class Worklog:
             print("  {}. {}".format(date_index + 1, date_string))
         while True:
             print()
-            get_input = input("Enter the number for the date you wish to see: ").strip().lower()
+            get_input = input("Enter the number for the date you wish to see (1-{}): ".format(len(self.task_list.date_list()))).strip().lower()
             try:
                 input_as_zero_based_int = int(get_input) - 1
             except ValueError:
@@ -111,7 +115,7 @@ class Worklog:
             print("  {}. {}".format(duration_index + 1, duration))
         while True:
             print()
-            get_input = input("Enter the number for the duration you wish to see: ").strip().lower()
+            get_input = input("Enter the number for the duration you wish to see (1-{}): ".format(len(self.task_list.durations()))).strip().lower()
             try:
                 input_as_zero_based_int = int(get_input) - 1
             except ValueError:
@@ -168,12 +172,10 @@ class Worklog:
         input("\nPress Enter/Return to return to the main menu")
         print("\033c", end="")
 
-
-
-    def run_test(self):
+    def run_test(self, file_name):
         import sys
         system_input = sys.stdin
-        test_input = open('tests/basic.txt', 'r')
+        test_input = open('tests/{}'.format(file_name), 'r')
         sys.stdin = test_input
         self.initial_prompt()
         test_input.close()
@@ -184,6 +186,6 @@ if __name__ == '__main__':
     
     wl = Worklog()
     wl.initial_prompt()
-    # wl.run_test()
+    # wl.run_test("autorun-1.txt")
 
 
