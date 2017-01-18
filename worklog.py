@@ -60,7 +60,7 @@ class Worklog:
             get_input = input("Enter the number of your selection: ").strip().lower()
 
             if get_input == '1':
-                print("Search by date")
+                self.search_by_date()
                 break
             elif get_input == '2':
                 print("Search by time spent")
@@ -74,6 +74,13 @@ class Worklog:
             else:
                 print("\033c", end="")
                 print("That wasn't a valid number. Try again")
+
+    def search_by_date(self):
+        print("\033c", end="")
+        print("Choose from one of the following dates: ")
+        for date_index, date_string in enumerate(self.task_list.date_list()):
+            print("  {}. {}".format(date_index + 1, date_string))
+
 
     def run_test(self):
         import sys
