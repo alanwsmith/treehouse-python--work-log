@@ -77,8 +77,9 @@ class TaskList:
         for task in self.tasks:
             if re.search(r'%s' % regex, task.name, re.IGNORECASE):
                 tasks.append(task)
-            if re.search(r'%s' % regex, task.notes, re.IGNORECASE):
-                tasks.append(task)
+            if task.notes:
+                if re.search(r'%s' % regex, task.notes, re.IGNORECASE):
+                    tasks.append(task)
         return tasks
 
     def tasks_with_string(self, string):
