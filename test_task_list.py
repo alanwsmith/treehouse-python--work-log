@@ -125,6 +125,11 @@ class TaskListTest:
         self.assert_equal(True, task_list.read_from_file('tests/fixture-2.csv'))
         self.assert_equal(2, len(task_list.tasks_for_duration(30)))
 
+    def test_tasks_with_regex(self):
+        task_list = TaskList()
+        self.assert_equal(True, task_list.read_from_file('tests/fixture-2.csv'))
+        self.assert_equal(3, len(task_list.tasks_with_regex('s\w\wG')))
+
     def test_tasks_with_string(self):
         task_list = TaskList()
         self.assert_equal(True, task_list.read_from_file('tests/fixture-2.csv'))
