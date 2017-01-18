@@ -64,6 +64,12 @@ class TaskListTest:
         self.assert_equal(30, task.minutes)
         self.assert_equal('This is a wonderful test task', task.notes)
 
+    def test_read_from_file_that_does_not_exist(self):
+        task_list = TaskList()
+        self.assert_equal(True, task_list.read_from_file('file-that-does-not-exist.csv'))
+        self.assert_equal(0, len(task_list.tasks))
+
+         
 
 
 if __name__ == '__main__':

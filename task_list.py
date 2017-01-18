@@ -1,4 +1,5 @@
 import csv
+import os.path
 
 from task import Task
 
@@ -13,6 +14,13 @@ class TaskList:
         return True
 
     def read_from_file(self, file_path):
+        """Turns a CSV file into a set of tasks. 
+
+        If the file does not exist, the tasks
+        instance variable simple remains empty.
+        """
+        if not os.path.isfile(file_path):
+            return True
         with open(file_path, 'r') as csvfile:
             task_reader = csv.reader(csvfile, delimiter='\t', quotechar='|')
             for row in task_reader:
