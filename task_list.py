@@ -75,10 +75,10 @@ class TaskList:
     def tasks_with_string(self, string):
         tasks = []
         for task in self.tasks:
-            if re.search(string.lower(), task.name.lower()):
+            if re.search(string, task.name, re.IGNORECASE):
                 tasks.append(task)
             if task.notes:
-                if re.search(string.lower(), task.notes.lower()):
+                if re.search(string, task.notes, re.IGNORECASE):
                     tasks.append(task)
         return tasks
 
