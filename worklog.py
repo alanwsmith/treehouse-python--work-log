@@ -121,8 +121,10 @@ class Worklog:
             else:
                 if input_as_zero_based_int >= 0 and input_as_zero_based_int < len(self.task_list.durations()):
                     print("\033c", end="")
-                    request_minutes = self.task_list.durations()[input_as_zero_based_int]
-                    print("Here are the tasks that took {} minutes".format(request_minutes))
+                    request_minutes = int(self.task_list.durations()[input_as_zero_based_int])
+                    print("Here are the tasks that took {} minutes:\n".format(request_minutes))
+                    for task in self.task_list.tasks_for_duration(request_minutes):
+                        task.display()
 
                     input("\nPress Enter/Return to return to the main menu")
                     print("\033c", end="")
