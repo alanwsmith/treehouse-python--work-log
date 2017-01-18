@@ -17,6 +17,7 @@ class TaskList:
             task_reader = csv.reader(csvfile, delimiter='\t', quotechar='|')
             for row in task_reader:
                 task = Task()
+                task.set_date(row[0])
                 self.tasks.append(task)
         return True 
 
