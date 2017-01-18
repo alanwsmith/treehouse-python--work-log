@@ -14,6 +14,8 @@ class TaskList:
         return True
 
     def date_list(self):
+        """TODO: This should be refacoted to be called `dates`
+        """
         date_list = []
         for task in self.tasks:
             check_date = str(task.date)
