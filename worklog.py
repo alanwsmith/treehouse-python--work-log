@@ -80,6 +80,23 @@ class Worklog:
         print("Choose from one of the following dates: ")
         for date_index, date_string in enumerate(self.task_list.date_list()):
             print("  {}. {}".format(date_index + 1, date_string))
+        while True:
+            print()
+            get_input = input("Enter the number for the date you wish to see: ").strip().lower()
+            try:
+                input_as_int = int(get_input)
+            except ValueError:
+                print("That isn't a valid number. Try again.")
+                continue
+            else:
+                if input_as_int >= 0 and input_as_int < len(self.task_list.date_list()):
+                    print("Got it!")
+                    break
+                else:
+                    print("That isn't a valid option. Try again.")
+                    continue
+
+
 
 
     def run_test(self):
