@@ -13,6 +13,14 @@ class TaskList:
         self.tasks.append(task)
         return True
 
+    def date_list(self):
+        date_list = []
+        for task in self.tasks:
+            check_date = str(task.date)
+            if check_date not in date_list:
+                date_list.append(check_date)
+        return sorted(date_list)
+
     def read_from_file(self, file_path):
         """Turns a CSV file into a set of tasks. 
 
@@ -39,7 +47,12 @@ class TaskList:
                 taskwriter.writerow([task.date, task.name, task.minutes, task.notes])
         return True
 
-
+    def tasks_for_date(self, date_string):
+        matching_tasks = []
+        for task in self.tasks:
+            if date_string == str(task.date):
+                matching_tasks.append(task)
+        return matching_tasks 
 
 
 if __name__ == '__main__':

@@ -38,13 +38,72 @@ class Worklog:
                 print("\033c", end="")
                 self.add_item()
             elif get_input == '2':
-                print("TKTKTKTK: Lookup")
+                self.lookup_menu()
             elif get_input == '3':
                 print("Thanks for using Worklogger!")
                 break
             else:
                 print("\033c", end="")
                 print("That wasn't a valid number. Try again.")
+
+    def lookup_menu(self):
+        print("\033c", end="")
+        
+        while True:
+
+            print("Lookup task by:\n")
+            print("  1. Date")
+            print("  2. Time spent")
+            print("  3. Exact text search")
+            print("  4. Pattern text search")
+        
+            get_input = input("Enter the number of your selection: ").strip().lower()
+
+            if get_input == '1':
+                self.search_by_date()
+                break
+            elif get_input == '2':
+                print("Search by time spent")
+                break
+            elif get_input == '3': 
+                print("Search by exact text string")
+                break
+            elif get_input == '4':
+                print("Search by RegEx Pattern")
+                break
+            else:
+                print("\033c", end="")
+                print("That wasn't a valid number. Try again")
+
+    def search_by_date(self):
+        print("\033c", end="")
+        print("Choose from one of the following dates: ")
+        for date_index, date_string in enumerate(self.task_list.date_list()):
+            print("  {}. {}".format(date_index + 1, date_string))
+        while True:
+            print()
+            get_input = input("Enter the number for the date you wish to see: ").strip().lower()
+            try:
+                input_as_zero_based_int = int(get_input) - 1
+            except ValueError:
+                print("That isn't a valid option. Try again.")
+                continue
+            else:
+                if input_as_zero_based_int >= 0 and input_as_zero_based_int < len(self.task_list.date_list()):
+                    print("\033c", end="")
+                    request_date = self.task_list.date_list()[input_as_zero_based_int]
+                    print("Here are the tasks you did on {}:\n".format(request_date))
+                    for task in self.task_list.tasks_for_date(request_date):
+                        print("- {} ~ {} minutes ~  Notes: {}".format(task.name, task.minutes, task.notes))
+
+                    input("\nPress Enter/Return to return to the main menu")
+                    print("\033c", end="")
+                    break
+                else:
+                    print("That isn't a valid option. Try again.")
+                    continue
+
+
 
 
     def run_test(self):
