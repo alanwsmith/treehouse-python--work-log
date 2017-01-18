@@ -67,7 +67,7 @@ class TaskList:
     def tasks_for_duration(self, duration):
         tasks = []
         for task in self.tasks:
-            if duration == task.minutes:
+            if int(duration) == int(task.minutes):
                 tasks.append(task)
         return tasks
 
