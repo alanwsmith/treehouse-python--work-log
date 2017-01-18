@@ -59,6 +59,7 @@ class TaskListTest:
         self.assert_equal(True, task_list.read_from_file('tests/fixture-1.csv'))
         self.assert_equal(7, len(task_list.tasks))
         self.assert_equal('2017-01-02', str(task_list.tasks[0].date))
+        self.assert_equal('Test Task One', task_list.tasks[0].name)
 
 
 

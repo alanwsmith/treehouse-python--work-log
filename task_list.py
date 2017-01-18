@@ -18,6 +18,7 @@ class TaskList:
             for row in task_reader:
                 task = Task()
                 task.set_date(row[0])
+                task.set_name(row[1])
                 self.tasks.append(task)
         return True 
 
