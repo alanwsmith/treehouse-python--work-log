@@ -21,6 +21,14 @@ class TaskList:
                 date_list.append(check_date)
         return sorted(date_list)
 
+    def duration_list(self):
+        durations = []
+        for task in self.tasks:
+            check_duration = task.minutes
+            if check_duration not in durations:
+                durations.append(check_duration)
+        return sorted(durations)
+
     def read_from_file(self, file_path):
         """Turns a CSV file into a set of tasks. 
 
