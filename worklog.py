@@ -24,16 +24,15 @@ class Worklog:
         print("Your task has been added!")
 
     def initial_prompt(self):
-        which_number = None
         print("\033c", end="")
         print("### Welcome to Worklogger ###")
 
-        while which_number == None :
+        while True:
             print()
             print("Choose an option:\n")
-            print("  1. Add a new item.")
-            print("  2. Lookup an item.")
-            print("  3. Quit.\n")
+            print("  1. Add a new item")
+            print("  2. Lookup an item")
+            print("  3. Quit\n")
             get_input = input("Enter the number of your selection: ").strip().lower()
             if get_input == '1':
                 print("\033c", end="")
