@@ -172,12 +172,10 @@ class Worklog:
         input("\nPress Enter/Return to return to the main menu")
         print("\033c", end="")
 
-
-
-    def run_test(self):
+    def run_test(self, file_name):
         import sys
         system_input = sys.stdin
-        test_input = open('tests/basic.txt', 'r')
+        test_input = open('tests/{}'.format(file_name), 'r')
         sys.stdin = test_input
         self.initial_prompt()
         test_input.close()
@@ -188,6 +186,6 @@ if __name__ == '__main__':
     
     wl = Worklog()
     wl.initial_prompt()
-    # wl.run_test()
+    # wl.run_test("autorun-1.txt")
 
 
