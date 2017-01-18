@@ -26,7 +26,7 @@ class Task:
         self.set_notes(input("> "))
 
     def set_date(self, date):
-        self.date = datetime.datetime.strptime(date, '%Y-%m-%d')
+        self.date = datetime.datetime.strptime(date, '%Y-%m-%d').date()
         return True
 
 

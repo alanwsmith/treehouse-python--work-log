@@ -33,6 +33,7 @@ class TaskTest:
         self.assert_equal(True, task.set_date('2017-01-04'))
         self.assert_equal(1, task.date.month)
         self.assert_equal(4, task.date.day)
+        self.assert_equal('2017-01-04', str(task.date))
 
     def test_set_name(self):
         task = Task()
