@@ -68,7 +68,7 @@ class Worklog:
                 self.search_by_text()
                 break
             elif get_input == '4':
-                print("Search by RegEx Pattern")
+                self.search_by_regex()
                 break
             else:
                 print("\033c", end="")
@@ -131,6 +131,23 @@ class Worklog:
                 else:
                     print("That isn't a valid option. Try again.")
                     continue
+    
+    def search_by_regex(self):
+        print("\033c", end="")
+        print("Enter the regular expression you want to search with:")
+        get_input = input("> ")
+        list_of_tasks = self.task_list.tasks_with_regex(get_input)
+        if len(list_of_tasks) > 0:
+            print("\033c", end="")
+            print("Here are the tasks who's name or notes match the '{}' pattern:\n".format(get_input))
+            for task in list_of_tasks:
+                task.display()
+        else:
+            print("\nThe pattern '{}' doesn't match any task names or notes.\n")
+
+        input("\nPress Enter/Return to return to the main menu")
+        print("\033c", end="")
+
 
     def search_by_text(self):
         print("\033c", end="")
