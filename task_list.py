@@ -19,7 +19,7 @@ class TaskList:
             check_date = str(task.date)
             if check_date not in date_list:
                 date_list.append(check_date)
-        return date_list 
+        return sorted(date_list)
 
     def read_from_file(self, file_path):
         """Turns a CSV file into a set of tasks. 

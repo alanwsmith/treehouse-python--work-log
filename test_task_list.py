@@ -40,6 +40,47 @@ class TaskListTest:
         target_date_list = ['2017-01-02', '2017-01-03', '2017-01-04', '2017-01-07', '2017-01-08'] 
         self.assert_equal(target_date_list, task_list.date_list())
 
+    def test_date_list_is_sorted(self):
+        task_list = TaskList()
+        self.assert_equal(True, task_list.read_from_file('tests/fixture-2.csv'))
+        target_date_list = ["2016-01-03", "2016-02-07", "2016-11-12", "2017-01-01", "2017-01-02", "2017-01-03","2017-01-07"]
+        self.assert_equal(target_date_list, task_list.date_list())
+
+    def test_read_from_file(self):
+        task_list = TaskList()
+        self.assert_equal(True, task_list.read_from_file('tests/fixture-1.csv'))
+        self.assert_equal(7, len(task_list.tasks))
+        task = task_list.tasks[0]
+        self.assert_equal('2017-01-02', str(task.date))
+        self.assert_equal('Test Task One', task.name)
+        self.assert_equal(30, task.minutes)
+        self.assert_equal('This is a wonderful test task', task.notes)
+
+    def test_read_from_file_that_does_not_exist(self):
+        task_list = TaskList()
+        self.assert_equal(True, task_list.read_from_file('file-that-does-not-exist.csv'))
+        self.assert_equal(0, len(task_list.tasks))
+
+    def test_save_list_to_file(self):
+        """This is where the output is written. 
+        The checks for the valididity of the data are being done manually
+        """
+        task_list = TaskList()
+        task1 = Task()
+        output_file_path = self.testing_files[0] 
+        task1.set_name('Test Task One')
+        task1.set_minutes(30)
+        task1.set_notes('This is a great test task')
+        task_list.add_task(task1)
+
+        self.assert_equal(True, task_list.save_to_file(output_file_path))
+        self.assert_equal(True, os.path.isfile(output_file_path))
+        
+    def test_start_with_empty_list(self):
+        task_list = TaskList()
+        self.assert_equal(0, len(task_list.tasks))
+
+if __name__ == '__main__':
     def test_read_from_file(self):
         task_list = TaskList()
         self.assert_equal(True, task_list.read_from_file('tests/fixture-1.csv'))
