@@ -120,6 +120,11 @@ class TaskListTest:
         self.assert_equal(1, len(task_list.tasks_for_date('2017-01-02')))
         self.assert_equal(3, len(task_list.tasks_for_date('2017-01-03')))
 
+    def test_tasks_for_duration(self):
+        task_list = TaskList()
+        self.assert_equal(True, task_list.read_from_file('tests/fixture-2.csv'))
+        self.assert_equal(2, len(task_list.tasks_for_duration(30)))
+
 
 if __name__ == '__main__':
 
